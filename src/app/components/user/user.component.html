@@ -1,0 +1,72 @@
+
+  <h1>{{name}}</h1>
+<!-- //you have an object and you grab individual values within the object using . etc address.street, address.city -->
+  <ul>
+    <li>{{age}}</li>
+    <li>{{email}}</li>
+  <li>{{address.street}}, {{address.city}}, {{address.state}}</li>
+  </ul>
+
+<button (click)= "onClick()">Click</button>
+<button (click)= "toggleEdit()">Edit User</button>
+
+<div *ngIf=isEdit> 
+<h1>Edit User</h1>
+<form >
+  <div class="">
+    <label for="name">Name:
+    <input type="text" [(ngModel)]="name" name="name"></label>
+<!-- //double binding: binds values to other things -->
+  </div>
+
+  <div class="">
+    <label for="Age">Age:
+    <input type="number" [(ngModel)]="age" name="age"></label>
+
+  </div>
+
+  <div class="">
+    <label for="email">Email:
+    <input type="text" [(ngModel)]="email" name="email"></label>
+
+  </div>
+
+  <div class="">
+    <label for="street">Street:
+    <input type="text" [(ngModel)]="address.street" name="street"></label>
+
+  </div>
+
+  <div class="">
+    <label for="city">City:
+    <input type="text" [(ngModel)]="address.city" name="city"></label>
+
+  </div>
+
+  <div class="">
+    <label for="state">State:
+    <input type="text" [(ngModel)]="address.state" name="state"></label>
+
+  </div>
+</form>
+</div>
+
+  <h1>Hobbies</h1>
+  <form (submit)= "addHobby(hobbyID.value)">
+     <!-- //want to pass along as a value, and use the ID to distinguish where the value is coming from -->
+    <label for="hobby">Hobby</label>
+    <input type="text" #hobbyID>
+  </form>
+  <ul>
+    <li *ngFor="let hobby of hobbies; let i = index">
+      {{i}}: {{hobby}} <button (click)= "deleteHobby(hobby)">X</button>
+    </li>
+    <!-- //ngFor = for loop in angular, can grab index in this way, can also do math -->
+    <!-- //each 1 of the hobby(s), let it be known as hobby -->
+  </ul>
+
+  <h1>Posts</h1>
+  <div *ngFor= "let post of posts">
+    <h4>{{post.title}}</h4>
+    <p>{{post.body}}</p>
+  </div>
